@@ -334,6 +334,227 @@ hustle.cost +
 "</span>" +
 
 "<span class='tag'>" +
+function findHustles() {
+
+if (
+answers.money === undefined ||
+answers.time === undefined ||
+answers.vehicle === undefined
+) {
+
+alert("Please answer all three questions first.");
+
+return;
+
+}
+
+
+let hustles = [];
+
+
+// $0 + 1–5 hours/week
+if (answers.money === "0" && answers.time === "low") {
+
+if (answers.vehicle === "yes") {
+
+hustles.push({
+name: "Local Errand Service",
+cost: "$0–$25",
+difficulty: "Easy",
+description:
+"Help local people with errands, pickups, deliveries and small tasks."
+});
+
+hustles.push({
+name: "Local Delivery Service",
+cost: "$0–$25",
+difficulty: "Easy",
+description:
+"Offer local pickup and delivery services for people and small businesses."
+});
+
+}
+
+hustles.push({
+name: "Digital Services",
+cost: "$0",
+difficulty: "Easy",
+description:
+"Offer simple online services such as writing, research, data entry or social media help."
+});
+
+hustles.push({
+name: "Resume Assistance",
+cost: "$0",
+difficulty: "Easy",
+description:
+"Help job seekers improve resumes, cover letters and applications."
+});
+
+}
+
+
+// $25+ and 5–10+ hours/week
+else if (
+answers.money !== "0" &&
+(answers.time === "medium" || answers.time === "high")
+) {
+
+if (answers.vehicle === "yes") {
+
+hustles.push({
+name: "Mobile Car Cleaning",
+cost: "$25–$100",
+difficulty: "Easy",
+description:
+"Clean cars at customers' homes or workplaces using basic supplies."
+});
+
+hustles.push({
+name: "Local Delivery Service",
+cost: "$0–$25",
+difficulty: "Easy",
+description:
+"Offer local pickup and delivery services for people and small businesses."
+});
+
+hustles.push({
+name: "Local Errand Service",
+cost: "$0–$25",
+difficulty: "Easy",
+description:
+"Help local people with errands, pickups, deliveries and small tasks."
+});
+
+}
+
+hustles.push({
+name: "Digital Services",
+cost: "$0",
+difficulty: "Easy",
+description:
+"Offer simple online services such as writing, research, data entry or social media help."
+});
+
+hustles.push({
+name: "Resume Assistance",
+cost: "$0",
+difficulty: "Easy",
+description:
+"Help job seekers improve resumes, cover letters and applications."
+});
+
+}
+
+
+// No vehicle + limited time
+else if (
+answers.vehicle === "no" &&
+answers.time === "low"
+) {
+
+hustles.push({
+name: "Digital Services",
+cost: "$0",
+difficulty: "Easy",
+description:
+"Offer simple online services such as writing, research, data entry or social media help."
+});
+
+hustles.push({
+name: "Resume Assistance",
+cost: "$0",
+difficulty: "Easy",
+description:
+"Help job seekers improve resumes, cover letters and applications."
+});
+
+hustles.push({
+name: "Marketplace Flipping",
+cost: "$0–$50",
+difficulty: "Easy",
+description:
+"Find free or inexpensive items locally and resell them for a profit."
+});
+
+}
+
+
+// More time available
+else {
+
+hustles.push({
+name: "Digital Services",
+cost: "$0",
+difficulty: "Easy",
+description:
+"Offer simple online services such as writing, research, data entry or social media help."
+});
+
+hustles.push({
+name: "Resume Assistance",
+cost: "$0",
+difficulty: "Easy",
+description:
+"Help job seekers improve resumes, cover letters and applications."
+});
+
+hustles.push({
+name: "Marketplace Flipping",
+cost: "$0–$50",
+difficulty: "Easy",
+description:
+"Find free or inexpensive items locally and resell them for a profit."
+});
+
+if (answers.vehicle === "yes") {
+
+hustles.push({
+name: "Local Errand Service",
+cost: "$0–$25",
+difficulty: "Easy",
+description:
+"Help local people with errands, pickups, deliveries and small tasks."
+});
+
+}
+
+}
+
+
+// Make sure the list has matches
+if (hustles.length === 0) {
+
+hustles.push({
+name: "Digital Services",
+cost: "$0",
+difficulty: "Easy",
+description:
+"Offer simple online services such as writing, research, data entry or social media help."
+});
+
+}
+
+
+let list = document.getElementById("hustleList");
+
+list.innerHTML = "";
+
+
+hustles.forEach(function(hustle) {
+
+let div = document.createElement("div");
+
+div.className = "hustle";
+
+div.innerHTML =
+"<h3>" + hustle.name + "</h3>" +
+
+"<span class='tag'>Start: " +
+hustle.cost +
+"</span>" +
+
+"<span class='tag'>" +
 hustle.difficulty +
 "</span>" +
 
