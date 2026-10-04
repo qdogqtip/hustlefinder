@@ -83,6 +83,22 @@ button:hover {
     display: none;
 }
 
+.summary {
+    background: #e8f5ef;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 20px;
+}
+
+.summary h2 {
+    margin-bottom: 10px;
+}
+
+.summary p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .hustle {
     border-top: 1px solid #ddd;
     padding: 18px 0;
@@ -241,6 +257,92 @@ buttons.forEach(function(btn) {
 });
 
 button.classList.add("selected");
+
+}
+
+
+function getMoneyText() {
+
+if (answers.money === "0") {
+    return "$0";
+}
+
+if (answers.money === "25") {
+    return "$25";
+}
+
+if (answers.money === "50") {
+    return "$50";
+}
+
+return "$100+";
+
+}
+
+
+function getTimeText() {
+
+if (answers.time === "low") {
+    return "1–5 hours per week";
+}
+
+if (answers.time === "medium") {
+    return "5–10 hours per week";
+}
+
+return "10+ hours per week";
+
+}
+
+
+function getVehicleText() {
+
+if (answers.vehicle === "yes") {
+    return "Yes";
+}
+
+return "No";
+
+}
+
+
+function getStrategyText() {
+
+if (
+answers.money === "0" &&
+answers.vehicle === "yes"
+) {
+
+return "We prioritized hustles that require little or no upfront money and can take advantage of your vehicle.";
+
+}
+
+if (
+answers.money === "0" &&
+answers.vehicle === "no"
+) {
+
+return "We prioritized hustles that require little or no upfront money and can be started without a vehicle.";
+
+}
+
+if (
+answers.time === "low"
+) {
+
+return "We prioritized flexible hustles that can fit into a limited amount of free time.";
+
+}
+
+if (
+answers.time === "high"
+) {
+
+return "You have more time available, so we included hustles with greater potential to build into a larger side income.";
+
+}
+
+return "We prioritized flexible hustles that fit your available budget, time and resources.";
 
 }
 
@@ -436,7 +538,15 @@ description:
 }
 
 
-// Display hustles
+// Build personalized summary
+
+let moneyText = getMoneyText();
+let timeText = getTimeText();
+let vehicleText = getVehicleText();
+let strategyText = getStrategyText();
+
+
+// Display results
 
 let list = document.getElementById("hustleList");
 
@@ -475,6 +585,50 @@ hustle.name +
 list.appendChild(div);
 
 });
+
+
+// Add personalized summary above results
+
+let resultsCard = document.querySelector("#results .card");
+
+let existingSummary = document.getElementById("personalSummary");
+
+if (existingSummary) {
+    existingSummary.remove();
+}
+
+let summary = document.createElement("div");
+
+summary.id = "personalSummary";
+
+summary.className = "summary";
+
+summary.innerHTML =
+
+"<h2>🎯 We Found " +
+hustles.length +
+" Hustle Matches!</h2>" +
+
+"<p><strong>💰 Starting budget:</strong> " +
+moneyText +
+"</p>" +
+
+"<p><strong>⏰ Available time:</strong> " +
+timeText +
+"</p>" +
+
+"<p><strong>🚗 Vehicle:</strong> " +
+vehicleText +
+"</p>" +
+
+"<p>" +
+strategyText +
+"</p>";
+
+resultsCard.insertBefore(
+summary,
+document.getElementById("hustleList")
+);
 
 
 document.getElementById("questions").style.display = "none";
