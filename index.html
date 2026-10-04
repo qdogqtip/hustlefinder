@@ -365,21 +365,271 @@ window.scrollTo(0, 0);
 
 function showPlan(name) {
 
-let message =
-"HOW TO START: " + name +
-"\n\n" +
+    let title = "";
+    let content = "";
 
-"1. Decide exactly what service you will offer.\n\n" +
+    if (name === "Local Errand Service") {
 
-"2. Figure out what supplies or tools you need.\n\n" +
+        title = "🚗 Local Errand Service";
 
-"3. Set a simple starting price.\n\n" +
+        content =
+        "<h2>" + title + "</h2>" +
 
-"4. Tell people in your local area about your service.\n\n" +
+        "<p><strong>💰 Starting cost:</strong> $0–$25</p>" +
 
-"5. Complete your first job and ask for a review.";
+        "<p><strong>💵 What you can charge:</strong> " +
+        "$10–$30+ per small task</p>" +
 
-alert(message);
+        "<h3>🧰 What you need</h3>" +
+        "<p>Your vehicle, a phone, and a way for customers to contact you.</p>" +
+
+        "<h3>📍 Find customers</h3>" +
+        "<p>Start with friends, family, neighbors and local community groups.</p>" +
+
+        "<h3>📣 What to advertise</h3>" +
+        "<p>Offer grocery pickups, small deliveries, package pickups, donation drop-offs and other simple errands.</p>" +
+
+        "<h3>📝 Ready-to-use ad</h3>" +
+
+        "<p><em>" +
+        "Need a local errand handled? I provide reliable local pickup, delivery and small errand services. " +
+        "Message me with what you need and I'll give you a price." +
+        "</em></p>" +
+
+        "<h3>🚀 Your first 5 steps</h3>" +
+
+        "<ol>" +
+        "<li>Choose 3–5 errands you will offer.</li>" +
+        "<li>Set your starting prices.</li>" +
+        "<li>Create your advertisement.</li>" +
+        "<li>Post it in local community groups.</li>" +
+        "<li>Complete your first job and ask for a review.</li>" +
+        "</ol>";
+    }
+
+
+    else if (name === "Mobile Car Cleaning") {
+
+        title = "🚘 Mobile Car Cleaning";
+
+        content =
+        "<h2>" + title + "</h2>" +
+
+        "<p><strong>💰 Starting cost:</strong> $25–$100</p>" +
+
+        "<p><strong>💵 What you can charge:</strong> " +
+        "$25–$75+ per vehicle</p>" +
+
+        "<h3>🧰 What you need</h3>" +
+        "<p>Basic cleaning supplies, towels, brushes and access to water.</p>" +
+
+        "<h3>📍 Find customers</h3>" +
+        "<p>Start with neighbors, coworkers, friends and local Facebook groups.</p>" +
+
+        "<h3>📣 What to advertise</h3>" +
+        "<p>Offer a simple interior cleanup, exterior wash or basic package.</p>" +
+
+        "<h3>📝 Ready-to-use ad</h3>" +
+
+        "<p><em>" +
+        "Mobile car cleaning available! I'll come to you and clean your vehicle at your home or workplace. " +
+        "Affordable pricing and convenient service. Message me for availability." +
+        "</em></p>" +
+
+        "<h3>🚀 Your first 5 steps</h3>" +
+
+        "<ol>" +
+        "<li>Buy only the basic supplies.</li>" +
+        "<li>Practice on your own vehicle.</li>" +
+        "<li>Take before-and-after pictures.</li>" +
+        "<li>Post your service locally.</li>" +
+        "<li>Get your first customer and ask for a review.</li>" +
+        "</ol>";
+    }
+
+
+    else if (name === "Local Delivery Service") {
+
+        title = "📦 Local Delivery Service";
+
+        content =
+        "<h2>" + title + "</h2>" +
+
+        "<p><strong>💰 Starting cost:</strong> $0–$25</p>" +
+
+        "<p><strong>💵 What you can charge:</strong> " +
+        "$10–$40+ depending on distance and item</p>" +
+
+        "<h3>🧰 What you need</h3>" +
+        "<p>A reliable vehicle, phone and a way to communicate with customers.</p>" +
+
+        "<h3>📍 Find customers</h3>" +
+        "<p>Target local small businesses, marketplace sellers and people who need items transported.</p>" +
+
+        "<h3>📣 What to advertise</h3>" +
+        "<p>Offer local pickup and delivery for items that customers cannot easily transport themselves.</p>" +
+
+        "<h3>📝 Ready-to-use ad</h3>" +
+
+        "<p><em>" +
+        "Need something picked up or delivered locally? I provide reliable local delivery service. " +
+        "Send me the pickup and delivery locations for a quick quote." +
+        "</em></p>" +
+
+        "<h3>🚀 Your first 5 steps</h3>" +
+
+        "<ol>" +
+        "<li>Choose your service area.</li>" +
+        "<li>Set a minimum delivery price.</li>" +
+        "<li>Create your advertisement.</li>" +
+        "<li>Post locally.</li>" +
+        "<li>Complete your first delivery and request a review.</li>" +
+        "</ol>";
+    }
+
+
+    else if (name === "Digital Services") {
+
+        title = "💻 Digital Services";
+
+        content =
+        "<h2>" + title + "</h2>" +
+
+        "<p><strong>💰 Starting cost:</strong> $0</p>" +
+
+        "<p><strong>💵 What you can charge:</strong> " +
+        "$10–$50+ per small project</p>" +
+
+        "<h3>🧰 What you need</h3>" +
+        "<p>A phone or computer and internet access.</p>" +
+
+        "<h3>💼 Services you can offer</h3>" +
+        "<p>Writing, data entry, research, social media assistance and simple document formatting.</p>" +
+
+        "<h3>📍 Find customers</h3>" +
+        "<p>Start with people you know, local businesses and online freelance marketplaces.</p>" +
+
+        "<h3>🚀 Your first 5 steps</h3>" +
+
+        "<ol>" +
+        "<li>Choose one service.</li>" +
+        "<li>Create a simple example of your work.</li>" +
+        "<li>Set a beginner-friendly price.</li>" +
+        "<li>Contact potential customers.</li>" +
+        "<li>Complete your first project and request a review.</li>" +
+        "</ol>";
+    }
+
+
+    else if (name === "Resume Assistance") {
+
+        title = "📄 Resume Assistance";
+
+        content =
+        "<h2>" + title + "</h2>" +
+
+        "<p><strong>💰 Starting cost:</strong> $0</p>" +
+
+        "<p><strong>💵 What you can charge:</strong> " +
+        "$15–$75+ depending on the service</p>" +
+
+        "<h3>🧰 What you need</h3>" +
+        "<p>A phone or computer and a document editor.</p>" +
+
+        "<h3>💼 What you can offer</h3>" +
+        "<p>Resume formatting, proofreading, cover letters and application assistance.</p>" +
+
+        "<h3>📍 Find customers</h3>" +
+        "<p>Job seekers, friends, family, local community groups and online marketplaces.</p>" +
+
+        "<h3>🚀 Your first 5 steps</h3>" +
+
+        "<ol>" +
+        "<li>Create a sample resume.</li>" +
+        "<li>Choose your service packages.</li>" +
+        "<li>Set beginner pricing.</li>" +
+        "<li>Advertise to people looking for work.</li>" +
+        "<li>Ask satisfied customers for referrals.</li>" +
+        "</ol>";
+    }
+
+
+    else {
+
+        title = "🛒 Marketplace Flipping";
+
+        content =
+        "<h2>" + title + "</h2>" +
+
+        "<p><strong>💰 Starting cost:</strong> $0–$50</p>" +
+
+        "<p><strong>💵 Potential:</strong> Buy low or find items free and resell them for more.</p>" +
+
+        "<h3>🔎 What to look for</h3>" +
+        "<p>Furniture, tools, electronics, household items and other items with resale value.</p>" +
+
+        "<h3>📍 Find inventory</h3>" +
+        "<p>Look for free or inexpensive items through local marketplaces and community groups.</p>" +
+
+        "<h3>📸 Sell it</h3>" +
+        "<p>Clean the item, take clear pictures and write an honest description.</p>" +
+
+        "<h3>🚀 Your first 5 steps</h3>" +
+
+        "<ol>" +
+        "<li>Find one inexpensive or free item.</li>" +
+        "<li>Check what similar items sell for.</li>" +
+        "<li>Clean and photograph the item.</li>" +
+        "<li>Create your listing.</li>" +
+        "<li>Sell it and reinvest the profit.</li>" +
+        "</ol>";
+    }
+
+
+    document.getElementById("questions").style.display = "none";
+
+    document.getElementById("results").style.display = "none";
+
+    let results = document.getElementById("results");
+
+    results.innerHTML =
+    "<div class='card'>" +
+    content +
+    "<button class='back-button' onclick='backToResults()'>" +
+    "← BACK TO MY HUSTLES" +
+    "</button>" +
+    "</div>";
+
+    results.style.display = "block";
+
+    window.scrollTo(0, 0);
+}
+
+
+function backToResults() {
+
+    document.getElementById("results").innerHTML =
+    "<div class='card'>" +
+
+    "<h2>💰 Your Hustle Matches</h2>" +
+
+    "<p>" +
+    "Based on your answers, here are some opportunities to consider:" +
+    "</p>" +
+
+    "<div id='hustleList'></div>" +
+
+    "<button class='back-button' onclick='startOver()'>" +
+    "START OVER" +
+    "</button>" +
+
+    "</div>";
+
+    document.getElementById("questions").style.display = "none";
+
+    document.getElementById("results").style.display = "block";
+
+    findHustles();
 
 }
 
