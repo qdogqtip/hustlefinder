@@ -227,7 +227,6 @@ START OVER
 
 let answers = {};
 
-
 function selectOption(button, category, value) {
 
 answers[category] = value;
@@ -261,9 +260,6 @@ return;
 let hustles = [];
 
 
-// $0 + 1–5 hours/week
-if (answers.money === "0" && answers.time === "low") {
-
 if (answers.vehicle === "yes") {
 
 hustles.push({
@@ -273,43 +269,6 @@ difficulty: "Easy",
 description:
 "Help local people with errands, pickups, deliveries and small tasks."
 });
-
-hustles.push({
-name: "Local Delivery Service",
-cost: "$0–$25",
-difficulty: "Easy",
-description:
-"Offer local pickup and delivery services for people and small businesses."
-});
-
-}
-
-hustles.push({
-name: "Digital Services",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Offer simple online services such as writing, research, data entry or social media help."
-});
-
-hustles.push({
-name: "Resume Assistance",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Help job seekers improve resumes, cover letters and applications."
-});
-
-}
-
-
-// $25+ and 5–10+ hours/week
-else if (
-answers.money !== "0" &&
-(answers.time === "medium" || answers.time === "high")
-) {
-
-if (answers.vehicle === "yes") {
 
 hustles.push({
 name: "Mobile Car Cleaning",
@@ -327,15 +286,7 @@ description:
 "Offer local pickup and delivery services for people and small businesses."
 });
 
-hustles.push({
-name: "Local Errand Service",
-cost: "$0–$25",
-difficulty: "Easy",
-description:
-"Help local people with errands, pickups, deliveries and small tasks."
-});
-
-}
+} else {
 
 hustles.push({
 name: "Digital Services",
@@ -353,24 +304,99 @@ description:
 "Help job seekers improve resumes, cover letters and applications."
 });
 
+hustles.push({
+name: "Marketplace Flipping",
+cost: "$0–$50",
+difficulty: "Easy",
+description:
+"Find free or inexpensive items locally and resell them for a profit."
+});
+
 }
 
 
-// No vehicle + limited time
-else if (
-answers.vehicle === "no" &&
-answers.time === "low"
-) {
+let list = document.getElementById("hustleList");
 
-hustles.push({
-name: "Digital Services",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Offer simple online services such as writing, research, data entry or social media help."
+list.innerHTML = "";
+
+
+hustles.forEach(function(hustle) {
+
+let div = document.createElement("div");
+
+div.className = "hustle";
+
+div.innerHTML =
+"<h3>" + hustle.name + "</h3>" +
+
+"<span class='tag'>Start: " +
+hustle.cost +
+"</span>" +
+
+"<span class='tag'>" +
+hustle.difficulty +
+"</span>" +
+
+"<p>" +
+hustle.description +
+"</p>" +
+
+"<button class='start-button' onclick=\"showPlan('" +
+hustle.name +
+"')\">" +
+
+"HOW DO I START?" +
+
+"</button>";
+
+list.appendChild(div);
+
 });
 
-hustles.push({
-name: "Resume Assistance",
-cost: "$0",
-difficulty
+
+document.getElementById("questions").style.display = "none";
+
+document.getElementById("results").style.display = "block";
+
+window.scrollTo(0, 0);
+
+}
+
+
+function showPlan(name) {
+
+let message =
+"HOW TO START: " + name +
+"\n\n" +
+
+"1. Decide exactly what service you will offer.\n\n" +
+
+"2. Figure out what supplies or tools you need.\n\n" +
+
+"3. Set a simple starting price.\n\n" +
+
+"4. Tell people in your local area about your service.\n\n" +
+
+"5. Complete your first job and ask for a review.";
+
+alert(message);
+
+}
+
+
+function startOver() {
+
+answers = {};
+
+document.getElementById("questions").style.display = "block";
+
+document.getElementById("results").style.display = "none";
+
+window.scrollTo(0, 0);
+
+}
+
+</script>
+
+</body>
+    </html>
