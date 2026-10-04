@@ -144,9 +144,7 @@ button:hover {
 Find a side hustle that fits your life.
 </div>
 
-
 <div id="questions">
-
 
 <div class="card">
 <h2>How much can you start with?</h2>
@@ -172,7 +170,6 @@ $100+
 </div>
 </div>
 
-
 <div class="card">
 <h2>How much time do you have?</h2>
 
@@ -193,7 +190,6 @@ $100+
 </div>
 </div>
 
-
 <div class="card">
 <h2>Do you have a vehicle?</h2>
 
@@ -210,13 +206,11 @@ No
 </div>
 </div>
 
-
 <button class="primary" onclick="findHustles()">
 FIND MY HUSTLES 🚀
 </button>
 
 </div>
-
 
 <div id="results">
 
@@ -240,7 +234,6 @@ START OVER
 
 </div>
 
-
 <script>
 
 let answers = {};
@@ -248,693 +241,667 @@ let answers = {};
 
 function selectOption(button, category, value) {
 
-answers[category] = value;
+    answers[category] = value;
 
-let buttons = button.parentElement.querySelectorAll("button");
+    let buttons = button.parentElement.querySelectorAll("button");
 
-buttons.forEach(function(btn) {
-    btn.classList.remove("selected");
-});
+    buttons.forEach(function(btn) {
+        btn.classList.remove("selected");
+    });
 
-button.classList.add("selected");
+    button.classList.add("selected");
 
 }
 
 
 function getMoneyText() {
 
-if (answers.money === "0") {
-    return "$0";
-}
+    if (answers.money === "0") {
+        return "$0";
+    }
 
-if (answers.money === "25") {
-    return "$25";
-}
+    if (answers.money === "25") {
+        return "$25";
+    }
 
-if (answers.money === "50") {
-    return "$50";
-}
+    if (answers.money === "50") {
+        return "$50";
+    }
 
-return "$100+";
+    return "$100+";
 
 }
 
 
 function getTimeText() {
 
-if (answers.time === "low") {
-    return "1–5 hours per week";
-}
+    if (answers.time === "low") {
+        return "1–5 hours per week";
+    }
 
-if (answers.time === "medium") {
-    return "5–10 hours per week";
-}
+    if (answers.time === "medium") {
+        return "5–10 hours per week";
+    }
 
-return "10+ hours per week";
+    return "10+ hours per week";
 
 }
 
 
 function getVehicleText() {
 
-if (answers.vehicle === "yes") {
-    return "Yes";
-}
+    if (answers.vehicle === "yes") {
+        return "Yes";
+    }
 
-return "No";
+    return "No";
 
 }
 
 
 function getStrategyText() {
 
-if (
-answers.money === "0" &&
-answers.vehicle === "yes"
-) {
+    if (
+        answers.money === "0" &&
+        answers.vehicle === "yes"
+    ) {
 
-return "We prioritized hustles that require little or no upfront money and can take advantage of your vehicle.";
+        return "We prioritized hustles that require little or no upfront money and can take advantage of your vehicle.";
 
-}
+    }
 
-if (
-answers.money === "0" &&
-answers.vehicle === "no"
-) {
+    if (
+        answers.money === "0" &&
+        answers.vehicle === "no"
+    ) {
 
-return "We prioritized hustles that require little or no upfront money and can be started without a vehicle.";
+        return "We prioritized hustles that require little or no upfront money and can be started without a vehicle.";
 
-}
+    }
 
-if (
-answers.time === "low"
-) {
+    if (answers.time === "low") {
 
-return "We prioritized flexible hustles that can fit into a limited amount of free time.";
+        return "We prioritized flexible hustles that can fit into a limited amount of free time.";
 
-}
+    }
 
-if (
-answers.time === "high"
-) {
+    if (answers.time === "high") {
 
-return "You have more time available, so we included hustles with greater potential to build into a larger side income.";
+        return "You have more time available, so we included hustles with greater potential to build into a larger side income.";
 
-}
+    }
 
-return "We prioritized flexible hustles that fit your available budget, time and resources.";
+    return "We prioritized flexible hustles that fit your available budget, time and resources.";
 
 }
 
 
 function findHustles() {
 
-if (
-answers.money === undefined ||
-answers.time === undefined ||
-answers.vehicle === undefined
-) {
-
-alert("Please answer all three questions first.");
-
-return;
-
-}
-
-
-let hustles = [];
-
-
-// $0 + limited time
-if (
-answers.money === "0" &&
-answers.time === "low"
-) {
-
-if (answers.vehicle === "yes") {
-
-hustles.push({
-name: "Local Errand Service",
-cost: "$0–$25",
-difficulty: "Easy",
-description:
-"Help local people with errands, pickups, deliveries and small tasks."
-});
-
-hustles.push({
-name: "Local Delivery Service",
-cost: "$0–$25",
-difficulty: "Easy",
-description:
-"Offer local pickup and delivery services for people and small businesses."
-});
-
-}
-
-hustles.push({
-name: "Digital Services",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Offer simple online services such as writing, research, data entry or social media help."
-});
-
-hustles.push({
-name: "Resume Assistance",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Help job seekers improve resumes, cover letters and applications."
-});
-
-}
-
-
-// More money + more time
-else if (
-answers.money !== "0" &&
-(answers.time === "medium" || answers.time === "high")
-) {
-
-if (answers.vehicle === "yes") {
-
-hustles.push({
-name: "Mobile Car Cleaning",
-cost: "$25–$100",
-difficulty: "Easy",
-description:
-"Clean cars at customers' homes or workplaces using basic supplies."
-});
-
-hustles.push({
-name: "Local Delivery Service",
-cost: "$0–$25",
-difficulty: "Easy",
-description:
-"Offer local pickup and delivery services for people and small businesses."
-});
-
-hustles.push({
-name: "Local Errand Service",
-cost: "$0–$25",
-difficulty: "Easy",
-description:
-"Help local people with errands, pickups, deliveries and small tasks."
-});
-
-}
-
-hustles.push({
-name: "Digital Services",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Offer simple online services such as writing, research, data entry or social media help."
-});
-
-hustles.push({
-name: "Resume Assistance",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Help job seekers improve resumes, cover letters and applications."
-});
+    if (
+        answers.money === undefined ||
+        answers.time === undefined ||
+        answers.vehicle === undefined
+    ) {
+
+        alert("Please answer all three questions first.");
+
+        return;
+
+    }
+
+
+    let hustles = [];
+
+
+    // $0 + limited time
+
+    if (
+        answers.money === "0" &&
+        answers.time === "low"
+    ) {
+
+        if (answers.vehicle === "yes") {
+
+            hustles.push({
+                name: "Local Errand Service",
+                cost: "$0–$25",
+                difficulty: "Easy",
+                description:
+                "Help local people with errands, pickups, deliveries and small tasks."
+            });
+
+            hustles.push({
+                name: "Local Delivery Service",
+                cost: "$0–$25",
+                difficulty: "Easy",
+                description:
+                "Offer local pickup and delivery services for people and small businesses."
+            });
+
+        }
+
+        hustles.push({
+            name: "Digital Services",
+            cost: "$0",
+            difficulty: "Easy",
+            description:
+            "Offer simple online services such as writing, research, data entry or social media help."
+        });
+
+        hustles.push({
+            name: "Resume Assistance",
+            cost: "$0",
+            difficulty: "Easy",
+            description:
+            "Help job seekers improve resumes, cover letters and applications."
+        });
+
+    }
+
+
+    // More money + more time
+
+    else if (
+        answers.money !== "0" &&
+        (answers.time === "medium" || answers.time === "high")
+    ) {
+
+        if (answers.vehicle === "yes") {
+
+            hustles.push({
+                name: "Mobile Car Cleaning",
+                cost: "$25–$100",
+                difficulty: "Easy",
+                description:
+                "Clean cars at customers' homes or workplaces using basic supplies."
+            });
+
+            hustles.push({
+                name: "Local Delivery Service",
+                cost: "$0–$25",
+                difficulty: "Easy",
+                description:
+                "Offer local pickup and delivery services for people and small businesses."
+            });
+
+            hustles.push({
+                name: "Local Errand Service",
+                cost: "$0–$25",
+                difficulty: "Easy",
+                description:
+                "Help local people with errands, pickups, deliveries and small tasks."
+            });
+
+        }
+
+        hustles.push({
+            name: "Digital Services",
+            cost: "$0",
+            difficulty: "Easy",
+            description:
+            "Offer simple online services such as writing, research, data entry or social media help."
+        });
 
-}
+        hustles.push({
+            name: "Resume Assistance",
+            cost: "$0",
+            difficulty: "Easy",
+            description:
+            "Help job seekers improve resumes, cover letters and applications."
+        });
 
+    }
 
-// No vehicle + limited time
-else if (
-answers.vehicle === "no" &&
-answers.time === "low"
-) {
 
-hustles.push({
-name: "Digital Services",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Offer simple online services such as writing, research, data entry or social media help."
-});
+    // No vehicle + limited time
 
-hustles.push({
-name: "Resume Assistance",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Help job seekers improve resumes, cover letters and applications."
-});
+    else if (
+        answers.vehicle === "no" &&
+        answers.time === "low"
+    ) {
 
-hustles.push({
-name: "Marketplace Flipping",
-cost: "$0–$50",
-difficulty: "Easy",
-description:
-"Find free or inexpensive items locally and resell them for a profit."
-});
+        hustles.push({
+            name: "Digital Services",
+            cost: "$0",
+            difficulty: "Easy",
+            description:
+            "Offer simple online services such as writing, research, data entry or social media help."
+        });
 
-}
+        hustles.push({
+            name: "Resume Assistance",
+            cost: "$0",
+            difficulty: "Easy",
+            description:
+            "Help job seekers improve resumes, cover letters and applications."
+        });
 
+        hustles.push({
+            name: "Marketplace Flipping",
+            cost: "$0–$50",
+            difficulty: "Easy",
+            description:
+            "Find free or inexpensive items locally and resell them for a profit."
+        });
 
-// Other combinations
-else {
+    }
 
-hustles.push({
-name: "Digital Services",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Offer simple online services such as writing, research, data entry or social media help."
-});
 
-hustles.push({
-name: "Resume Assistance",
-cost: "$0",
-difficulty: "Easy",
-description:
-"Help job seekers improve resumes, cover letters and applications."
-});
+    // Other combinations
 
-hustles.push({
-name: "Marketplace Flipping",
-cost: "$0–$50",
-difficulty: "Easy",
-description:
-"Find free or inexpensive items locally and resell them for a profit."
-});
+    else {
 
-if (answers.vehicle === "yes") {
+        hustles.push({
+            name: "Digital Services",
+            cost: "$0",
+            difficulty: "Easy",
+            description:
+            "Offer simple online services such as writing, research, data entry or social media help."
+        });
 
-hustles.push({
-name: "Local Errand Service",
-cost: "$0–$25",
-difficulty: "Easy",
-description:
-"Help local people with errands, pickups, deliveries and small tasks."
-});
+        hustles.push({
+            name: "Resume Assistance",
+            cost: "$0",
+            difficulty: "Easy",
+            description:
+            "Help job seekers improve resumes, cover letters and applications."
+        });
 
-}
+        hustles.push({
+            name: "Marketplace Flipping",
+            cost: "$0–$50",
+            difficulty: "Easy",
+            description:
+            "Find free or inexpensive items locally and resell them for a profit."
+        });
 
-}
+        if (answers.vehicle === "yes") {
 
+            hustles.push({
+                name: "Local Errand Service",
+                cost: "$0–$25",
+                difficulty: "Easy",
+                description:
+                "Help local people with errands, pickups, deliveries and small tasks."
+            });
 
-// Build personalized summary
+        }
 
-let moneyText = getMoneyText();
-let timeText = getTimeText();
-let vehicleText = getVehicleText();
-let strategyText = getStrategyText();
+    }
 
 
-// Display results
+    // Display hustles
 
-let list = document.getElementById("hustleList");
+    let list = document.getElementById("hustleList");
 
-list.innerHTML = "";
+    list.innerHTML = "";
 
 
-hustles.forEach(function(hustle) {
+    hustles.forEach(function(hustle) {
 
-let div = document.createElement("div");
+        let div = document.createElement("div");
 
-div.className = "hustle";
+        div.className = "hustle";
 
-div.innerHTML =
-"<h3>" + hustle.name + "</h3>" +
+        div.innerHTML =
+        "<h3>" + hustle.name + "</h3>" +
 
-"<span class='tag'>Start: " +
-hustle.cost +
-"</span>" +
+        "<span class='tag'>Start: " +
+        hustle.cost +
+        "</span>" +
 
-"<span class='tag'>" +
-hustle.difficulty +
-"</span>" +
+        "<span class='tag'>" +
+        hustle.difficulty +
+        "</span>" +
 
-"<p>" +
-hustle.description +
-"</p>" +
+        "<p>" +
+        hustle.description +
+        "</p>" +
 
-"<button class='start-button' onclick=\"showPlan('" +
-hustle.name +
-"')\">" +
+        "<button class='start-button' onclick=\"showPlan('" +
+        hustle.name +
+        "')\">" +
 
-"HOW DO I START?" +
+        "HOW DO I START?" +
 
-"</button>";
+        "</button>";
 
-list.appendChild(div);
+        list.appendChild(div);
 
-});
+    });
 
 
-// Add personalized summary above results
+    // Personalized summary
 
-let resultsCard = document.querySelector("#results .card");
+    let moneyText = getMoneyText();
+    let timeText = getTimeText();
+    let vehicleText = getVehicleText();
+    let strategyText = getStrategyText();
 
-let existingSummary = document.getElementById("personalSummary");
 
-if (existingSummary) {
-    existingSummary.remove();
-}
+    let resultsCard = document.querySelector("#results .card");
 
-let summary = document.createElement("div");
+    let existingSummary =
+    document.getElementById("personalSummary");
 
-summary.id = "personalSummary";
 
-summary.className = "summary";
+    if (existingSummary) {
+        existingSummary.remove();
+    }
 
-summary.innerHTML =
 
-"<h2>🎯 We Found " +
-hustles.length +
-" Hustle Matches!</h2>" +
+    let summary = document.createElement("div");
 
-"<p><strong>💰 Starting budget:</strong> " +
-moneyText +
-"</p>" +
+    summary.id = "personalSummary";
 
-"<p><strong>⏰ Available time:</strong> " +
-timeText +
-"</p>" +
+    summary.className = "summary";
 
-"<p><strong>🚗 Vehicle:</strong> " +
-vehicleText +
-"</p>" +
 
-"<p>" +
-strategyText +
-"</p>";
+    summary.innerHTML =
 
-resultsCard.insertBefore(
-summary,
-document.getElementById("hustleList")
-);
+    "<h2>🎯 We Found " +
+    hustles.length +
+    " Hustle Matches!</h2>" +
 
+    "<p><strong>💰 Starting budget:</strong> " +
+    moneyText +
+    "</p>" +
 
-document.getElementById("questions").style.display = "none";
+    "<p><strong>⏰ Available time:</strong> " +
+    timeText +
+    "</p>" +
 
-document.getElementById("results").style.display = "block";
+    "<p><strong>🚗 Vehicle:</strong> " +
+    vehicleText +
+    "</p>" +
 
-window.scrollTo(0, 0);
+    "<p>" +
+    strategyText +
+    "</p>";
+
+
+    resultsCard.insertBefore(
+        summary,
+        document.getElementById("hustleList")
+    );
+
+
+    document.getElementById("questions").style.display = "none";
+
+    document.getElementById("results").style.display = "block";
+
+    window.scrollTo(0, 0);
 
 }
 
 
 function showPlan(name) {
 
-let title = "";
-let content = "";
+    let title = "";
+    let content = "";
 
 
-if (name === "Local Errand Service") {
+    if (name === "Local Errand Service") {
 
-title = "🚗 Local Errand Service";
+        title = "🚗 Local Errand Service";
 
-content =
-"<h2>" + title + "</h2>" +
+        content =
+        "<h2>" + title + "</h2>" +
 
-"<p><strong>💰 Starting cost:</strong> $0–$25</p>" +
+        "<p><strong>💰 Starting cost:</strong> $0–$25</p>" +
 
-"<p><strong>💵 What you can charge:</strong> $10–$30+ per small task</p>" +
+        "<p><strong>💵 What you can charge:</strong> $10–$30+ per small task</p>" +
 
-"<h3>🧰 What you need</h3>" +
-"<p>Your vehicle, a phone, and a way for customers to contact you.</p>" +
+        "<h3>🧰 What you need</h3>" +
+        "<p>Your vehicle, a phone, and a way for customers to contact you.</p>" +
 
-"<h3>📍 Find customers</h3>" +
-"<p>Start with friends, family, neighbors and local community groups.</p>" +
+        "<h3>📍 Find customers</h3>" +
+        "<p>Start with friends, family, neighbors and local community groups.</p>" +
 
-"<h3>📣 What to advertise</h3>" +
-"<p>Offer grocery pickups, small deliveries, package pickups, donation drop-offs and other simple errands.</p>" +
+        "<h3>📣 What to advertise</h3>" +
+        "<p>Offer grocery pickups, small deliveries, package pickups, donation drop-offs and other simple errands.</p>" +
 
-"<h3>📝 Ready-to-use ad</h3>" +
+        "<h3>📝 Ready-to-use ad</h3>" +
 
-"<p><em>" +
-"Need a local errand handled? I provide reliable local pickup, delivery and small errand services. " +
-"Message me with what you need and I'll give you a price." +
-"</em></p>" +
+        "<p><em>" +
+        "Need a local errand handled? I provide reliable local pickup, delivery and small errand services. " +
+        "Message me with what you need and I'll give you a price." +
+        "</em></p>" +
 
-"<h3>🚀 Your first 5 steps</h3>" +
+        "<h3>🚀 Your first 5 steps</h3>" +
 
-"<ol>" +
-"<li>Choose 3–5 errands you will offer.</li>" +
-"<li>Set your starting prices.</li>" +
-"<li>Create your advertisement.</li>" +
-"<li>Post it in local community groups.</li>" +
-"<li>Complete your first job and ask for a review.</li>" +
-"</ol>";
+        "<ol>" +
+        "<li>Choose 3–5 errands you will offer.</li>" +
+        "<li>Set your starting prices.</li>" +
+        "<li>Create your advertisement.</li>" +
+        "<li>Post it in local community groups.</li>" +
+        "<li>Complete your first job and ask for a review.</li>" +
+        "</ol>";
 
-}
+    }
 
 
-else if (name === "Mobile Car Cleaning") {
+    else if (name === "Mobile Car Cleaning") {
 
-title = "🚘 Mobile Car Cleaning";
+        title = "🚘 Mobile Car Cleaning";
 
-content =
-"<h2>" + title + "</h2>" +
+        content =
+        "<h2>" + title + "</h2>" +
 
-"<p><strong>💰 Starting cost:</strong> $25–$100</p>" +
+        "<p><strong>💰 Starting cost:</strong> $25–$100</p>" +
 
-"<p><strong>💵 What you can charge:</strong> $25–$75+ per vehicle</p>" +
+        "<p><strong>💵 What you can charge:</strong> $25–$75+ per vehicle</p>" +
 
-"<h3>🧰 What you need</h3>" +
-"<p>Basic cleaning supplies, towels, brushes and access to water.</p>" +
+        "<h3>🧰 What you need</h3>" +
+        "<p>Basic cleaning supplies, towels, brushes and access to water.</p>" +
 
-"<h3>📍 Find customers</h3>" +
-"<p>Start with neighbors, coworkers, friends and local Facebook groups.</p>" +
+        "<h3>📍 Find customers</h3>" +
+        "<p>Start with neighbors, coworkers, friends and local Facebook groups.</p>" +
 
-"<h3>📣 What to advertise</h3>" +
-"<p>Offer a simple interior cleanup, exterior wash or basic package.</p>" +
+        "<h3>📣 What to advertise</h3>" +
+        "<p>Offer a simple interior cleanup, exterior wash or basic package.</p>" +
 
-"<h3>📝 Ready-to-use ad</h3>" +
+        "<h3>📝 Ready-to-use ad</h3>" +
 
-"<p><em>" +
-"Mobile car cleaning available! I'll come to you and clean your vehicle at your home or workplace. " +
-"Affordable pricing and convenient service. Message me for availability." +
-"</em></p>" +
+        "<p><em>" +
+        "Mobile car cleaning available! I'll come to you and clean your vehicle at your home or workplace. " +
+        "Affordable pricing and convenient service. Message me for availability." +
+        "</em></p>" +
 
-"<h3>🚀 Your first 5 steps</h3>" +
+        "<h3>🚀 Your first 5 steps</h3>" +
 
-"<ol>" +
-"<li>Buy only the basic supplies.</li>" +
-"<li>Practice on your own vehicle.</li>" +
-"<li>Take before-and-after pictures.</li>" +
-"<li>Post your service locally.</li>" +
-"<li>Get your first customer and ask for a review.</li>" +
-"</ol>";
+        "<ol>" +
+        "<li>Buy only the basic supplies.</li>" +
+        "<li>Practice on your own vehicle.</li>" +
+        "<li>Take before-and-after pictures.</li>" +
+        "<li>Post your service locally.</li>" +
+        "<li>Get your first customer and ask for a review.</li>" +
+        "</ol>";
 
-}
+    }
 
 
-else if (name === "Local Delivery Service") {
+    else if (name === "Local Delivery Service") {
 
-title = "📦 Local Delivery Service";
+        title = "📦 Local Delivery Service";
 
-content =
-"<h2>" + title + "</h2>" +
+        content =
+        "<h2>" + title + "</h2>" +
 
-"<p><strong>💰 Starting cost:</strong> $0–$25</p>" +
+        "<p><strong>💰 Starting cost:</strong> $0–$25</p>" +
 
-"<p><strong>💵 What you can charge:</strong> $10–$40+ depending on distance and item</p>" +
+        "<p><strong>💵 What you can charge:</strong> $10–$40+ depending on distance and item</p>" +
 
-"<h3>🧰 What you need</h3>" +
-"<p>A reliable vehicle, phone and a way to communicate with customers.</p>" +
+        "<h3>🧰 What you need</h3>" +
+        "<p>A reliable vehicle, phone and a way to communicate with customers.</p>" +
 
-"<h3>📍 Find customers</h3>" +
-"<p>Target local small businesses, marketplace sellers and people who need items transported.</p>" +
+        "<h3>📍 Find customers</h3>" +
+        "<p>Target local small businesses, marketplace sellers and people who need items transported.</p>" +
 
-"<h3>📣 What to advertise</h3>" +
-"<p>Offer local pickup and delivery for items that customers cannot easily transport themselves.</p>" +
+        "<h3>📣 What to advertise</h3>" +
+        "<p>Offer local pickup and delivery for items that customers cannot easily transport themselves.</p>" +
 
-"<h3>📝 Ready-to-use ad</h3>" +
+        "<h3>📝 Ready-to-use ad</h3>" +
 
-"<p><em>" +
-"Need something picked up or delivered locally? I provide reliable local delivery service. " +
-"Send me the pickup and delivery locations for a quick quote." +
-"</em></p>" +
+        "<p><em>" +
+        "Need something picked up or delivered locally? I provide reliable local delivery service. " +
+        "Send me the pickup and delivery locations for a quick quote." +
+        "</em></p>" +
 
-"<h3>🚀 Your first 5 steps</h3>" +
+        "<h3>🚀 Your first 5 steps</h3>" +
 
-"<ol>" +
-"<li>Choose your service area.</li>" +
-"<li>Set a minimum delivery price.</li>" +
-"<li>Create your advertisement.</li>" +
-"<li>Post locally.</li>" +
-"<li>Complete your first delivery and request a review.</li>" +
-"</ol>";
+        "<ol>" +
+        "<li>Choose your service area.</li>" +
+        "<li>Set a minimum delivery price.</li>" +
+        "<li>Create your advertisement.</li>" +
+        "<li>Post locally.</li>" +
+        "<li>Complete your first delivery and request a review.</li>" +
+        "</ol>";
 
-}
+    }
 
 
-else if (name === "Digital Services") {
+    else if (name === "Digital Services") {
 
-title = "💻 Digital Services";
+        title = "💻 Digital Services";
 
-content =
-"<h2>" + title + "</h2>" +
+        content =
+        "<h2>" + title + "</h2>" +
 
-"<p><strong>💰 Starting cost:</strong> $0</p>" +
+        "<p><strong>💰 Starting cost:</strong> $0</p>" +
 
-"<p><strong>💵 What you can charge:</strong> $10–$50+ per small project</p>" +
+        "<p><strong>💵 What you can charge:</strong> $10–$50+ per small project</p>" +
 
-"<h3>🧰 What you need</h3>" +
-"<p>A phone or computer and internet access.</p>" +
+        "<h3>🧰 What you need</h3>" +
+        "<p>A phone or computer and internet access.</p>" +
 
-"<h3>💼 Services you can offer</h3>" +
-"<p>Writing, data entry, research, social media assistance and simple document formatting.</p>" +
+        "<h3>💼 Services you can offer</h3>" +
+        "<p>Writing, data entry, research, social media assistance and simple document formatting.</p>" +
 
-"<h3>📍 Find customers</h3>" +
-"<p>Start with people you know, local businesses and online freelance marketplaces.</p>" +
+        "<h3>📍 Find customers</h3>" +
+        "<p>Start with people you know, local businesses and online freelance marketplaces.</p>" +
 
-"<h3>🚀 Your first 5 steps</h3>" +
+        "<h3>🚀 Your first 5 steps</h3>" +
 
-"<ol>" +
-"<li>Choose one service.</li>" +
-"<li>Create a simple example of your work.</li>" +
-"<li>Set a beginner-friendly price.</li>" +
-"<li>Contact potential customers.</li>" +
-"<li>Complete your first project and request a review.</li>" +
-"</ol>";
+        "<ol>" +
+        "<li>Choose one service.</li>" +
+        "<li>Create a simple example of your work.</li>" +
+        "<li>Set a beginner-friendly price.</li>" +
+        "<li>Contact potential customers.</li>" +
+        "<li>Complete your first project and request a review.</li>" +
+        "</ol>";
 
-}
+    }
 
 
-else if (name === "Resume Assistance") {
+    else if (name === "Resume Assistance") {
 
-title = "📄 Resume Assistance";
+        title = "📄 Resume Assistance";
 
-content =
-"<h2>" + title + "</h2>" +
+        content =
+        "<h2>" + title + "</h2>" +
 
-"<p><strong>💰 Starting cost:</strong> $0</p>" +
+        "<p><strong>💰 Starting cost:</strong> $0</p>" +
 
-"<p><strong>💵 What you can charge:</strong> $15–$75+ depending on the service</p>" +
+        "<p><strong>💵 What you can charge:</strong> $15–$75+ depending on the service</p>" +
 
-"<h3>🧰 What you need</h3>" +
-"<p>A phone or computer and a document editor.</p>" +
+        "<h3>🧰 What you need</h3>" +
+        "<p>A phone or computer and a document editor.</p>" +
 
-"<h3>💼 What you can offer</h3>" +
-"<p>Resume formatting, proofreading, cover letters and application assistance.</p>" +
+        "<h3>💼 What you can offer</h3>" +
+        "<p>Resume formatting, proofreading, cover letters and application assistance.</p>" +
 
-"<h3>📍 Find customers</h3>" +
-"<p>Job seekers, friends, family, local community groups and online marketplaces.</p>" +
+        "<h3>📍 Find customers</h3>" +
+        "<p>Job seekers, friends, family, local community groups and online marketplaces.</p>" +
 
-"<h3>🚀 Your first 5 steps</h3>" +
+        "<h3>🚀 Your first 5 steps</h3>" +
 
-"<ol>" +
-"<li>Create a sample resume.</li>" +
-"<li>Choose your service packages.</li>" +
-"<li>Set beginner pricing.</li>" +
-"<li>Advertise to people looking for work.</li>" +
-"<li>Ask satisfied customers for referrals.</li>" +
-"</ol>";
+        "<ol>" +
+        "<li>Create a sample resume.</li>" +
+        "<li>Choose your service packages.</li>" +
+        "<li>Set beginner pricing.</li>" +
+        "<li>Advertise to people looking for work.</li>" +
+        "<li>Ask satisfied customers for referrals.</li>" +
+        "</ol>";
 
-}
+    }
 
 
-else {
+    else {
 
-title = "🛒 Marketplace Flipping";
+        title = "🛒 Marketplace Flipping";
 
-content =
-"<h2>" + title + "</h2>" +
+        content =
+        "<h2>" + title + "</h2>" +
 
-"<p><strong>💰 Starting cost:</strong> $0–$50</p>" +
+        "<p><strong>💰 Starting cost:</strong> $0–$50</p>" +
 
-"<p><strong>💵 Potential:</strong> Buy low or find items free and resell them for more.</p>" +
+        "<p><strong>💵 Potential:</strong> Buy low or find items free and resell them for more.</p>" +
 
-"<h3>🔎 What to look for</h3>" +
-"<p>Furniture, tools, electronics, household items and other items with resale value.</p>" +
+        "<h3>🔎 What to look for</h3>" +
+        "<p>Furniture, tools, electronics, household items and other items with resale value.</p>" +
 
-"<h3>📍 Find inventory</h3>" +
-"<p>Look for free or inexpensive items through local marketplaces and community groups.</p>" +
+        "<h3>📍 Find inventory</h3>" +
+        "<p>Look for free or inexpensive items through local marketplaces and community groups.</p>" +
 
-"<h3>📸 Sell it</h3>" +
-"<p>Clean the item, take clear pictures and write an honest description.</p>" +
+        "<h3>📸 Sell it</h3>" +
+        "<p>Clean the item, take clear pictures and write an honest description.</p>" +
 
-"<h3>🚀 Your first 5 steps</h3>" +
+        "<h3>🚀 Your first 5 steps</h3>" +
 
-"<ol>" +
-"<li>Find one inexpensive or free item.</li>" +
-"<li>Check what similar items sell for.</li>" +
-"<li>Clean and photograph the item.</li>" +
-"<li>Create your listing.</li>" +
-"<li>Sell it and reinvest the profit.</li>" +
-"</ol>";
+        "<ol>" +
+        "<li>Find one inexpensive or free item.</li>" +
+        "<li>Check what similar items sell for.</li>" +
+        "<li>Clean and photograph the item.</li>" +
+        "<li>Create your listing.</li>" +
+        "<li>Sell it and reinvest the profit.</li>" +
+        "</ol>";
 
-}
+    }
 
 
-document.getElementById("questions").style.display = "none";
+    document.getElementById("questions").style.display = "none";
 
-document.getElementById("results").style.display = "none";
+    document.getElementById("results").style.display = "none";
 
-let results = document.getElementById("results");
+    let results = document.getElementById("results");
 
-results.innerHTML =
-"<div class='card'>" +
-content +
-"<button class='back-button' onclick='backToResults()'>" +
-"← BACK TO MY HUSTLES" +
-"</button>" +
-"</div>";
+    results.innerHTML =
+    "<div class='card'>" +
+    content +
+    "<button class='back-button' onclick='backToResults()'>" +
+    "← BACK TO MY HUSTLES" +
+    "</button>" +
+    "</div>";
 
-results.style.display = "block";
+    results.style.display = "block";
 
-window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 
 }
 
 
 function backToResults() {
 
-document.getElementById("results").innerHTML =
-"<div class='card'>" +
+    document.getElementById("results").innerHTML =
+    "<div class='card'>" +
 
-"<h2>💰 Your Hustle Matches</h2>" +
+    "<h2>💰 Your Hustle Matches</h2>" +
 
-"<p>" +
-"Based on your answers, here are some opportunities to consider:" +
-"</p>" +
+    "<p>" +
+    "Based on your answers, here are some opportunities to consider:" +
+    "</p>" +
 
-"<div id='hustleList'></div>" +
+    "<div id='hustleList'></div>" +
 
-"<button class='back-button' onclick='startOver()'>" +
-"START OVER" +
-"</button>" +
+    "<button class='back-button' onclick='startOver()'>" +
+    "START OVER" +
+    "</button>" +
 
-"</div>";
-
-document.getElementById("questions").style.display = "none";
-
-document.getElementById("results").style.display = "block";
-
-findHustles();
-
-}
+    "</div>";
 
 
-function startOver() {
+    document.getElementById("questions").style.display = "none";
 
-answers = {};
-
-document.getElementById("questions").style.display = "block";
-
-document.getElementById("results").style.display = "none";
-
-
-let selectedButtons = document.querySelectorAll(".selected");
-
-selectedButtons.forEach(function(button) {
-button.classList.remove("selected");
-});
-
-
-window.scrollTo(0, 0);
-
-}
-
-</script>
-
-</body>
-    </html>
+    document.getElementById("res
