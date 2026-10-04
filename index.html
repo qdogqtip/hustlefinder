@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>HustleFinder</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>HustleFinder</title><style>
 * {
     box-sizing: border-box;
 }
@@ -70,7 +65,7 @@ button:hover {
 }
 
 .selected {
-    background: #087f5b;
+    background: #087f5b !important;
 }
 
 .primary {
@@ -131,110 +126,39 @@ button:hover {
     background: #555;
     margin-top: 12px;
 }
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="logo">💰 HustleFinder</div>
-
-<div class="tagline">
+</style></head><body><div class="container"><div class="logo">💰 HustleFinder</div><div class="tagline">
 Find a side hustle that fits your life.
-</div>
-
-<div id="questions">
-
-<div class="card">
-<h2>How much can you start with?</h2>
-
-<div class="options">
-
-<button onclick="selectOption(this, 'money', '0')">
+</div><div id="questions"><div class="card">
+<h2>How much can you start with?</h2><div class="options"><button type="button" onclick="selectOption(this, 'money', '0')">
 $0
-</button>
-
-<button onclick="selectOption(this, 'money', '25')">
+</button><button type="button" onclick="selectOption(this, 'money', '25')">
 $25
-</button>
-
-<button onclick="selectOption(this, 'money', '50')">
+</button><button type="button" onclick="selectOption(this, 'money', '50')">
 $50
-</button>
-
-<button onclick="selectOption(this, 'money', '100')">
+</button><button type="button" onclick="selectOption(this, 'money', '100')">
 $100+
-</button>
-
-</div>
-</div>
-
-<div class="card">
-<h2>How much time do you have?</h2>
-
-<div class="options">
-
-<button onclick="selectOption(this, 'time', 'low')">
+</button></div>
+</div><div class="card">
+<h2>How much time do you have?</h2><div class="options"><button type="button" onclick="selectOption(this, 'time', 'low')">
 1–5 hours/week
-</button>
-
-<button onclick="selectOption(this, 'time', 'medium')">
+</button><button type="button" onclick="selectOption(this, 'time', 'medium')">
 5–10 hours/week
-</button>
-
-<button onclick="selectOption(this, 'time', 'high')">
+</button><button type="button" onclick="selectOption(this, 'time', 'high')">
 10+ hours/week
-</button>
-
-</div>
-</div>
-
-<div class="card">
-<h2>Do you have a vehicle?</h2>
-
-<div class="options">
-
-<button onclick="selectOption(this, 'vehicle', 'yes')">
+</button></div>
+</div><div class="card">
+<h2>Do you have a vehicle?</h2><div class="options"><button type="button" onclick="selectOption(this, 'vehicle', 'yes')">
 Yes
-</button>
-
-<button onclick="selectOption(this, 'vehicle', 'no')">
+</button><button type="button" onclick="selectOption(this, 'vehicle', 'no')">
 No
-</button>
-
-</div>
-</div>
-
-<button class="primary" onclick="findHustles()">
+</button></div>
+</div><button type="button" class="primary" onclick="findHustles()">
 FIND MY HUSTLES 🚀
-</button>
-
-</div>
-
-<div id="results">
-
-<div class="card">
-
-<h2>💰 Your Hustle Matches</h2>
-
-<p>
+</button></div><div id="results"><div class="card"><h2>💰 Your Hustle Matches</h2><p>
 Based on your answers, here are some opportunities to consider:
-</p>
-
-<div id="hustleList"></div>
-
-<button class="back-button" onclick="startOver()">
+</p><div id="hustleList"></div><button type="button" class="back-button" onclick="startOver()">
 START OVER
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
+</button></div></div></div><script>
 
 let answers = {};
 
@@ -354,8 +278,6 @@ function findHustles() {
     let hustles = [];
 
 
-    // $0 + limited time
-
     if (
         answers.money === "0" &&
         answers.time === "low"
@@ -399,8 +321,6 @@ function findHustles() {
 
     }
 
-
-    // More money + more time
 
     else if (
         answers.money !== "0" &&
@@ -454,8 +374,6 @@ function findHustles() {
     }
 
 
-    // No vehicle + limited time
-
     else if (
         answers.vehicle === "no" &&
         answers.time === "low"
@@ -487,8 +405,6 @@ function findHustles() {
 
     }
 
-
-    // Other combinations
 
     else {
 
@@ -531,8 +447,6 @@ function findHustles() {
     }
 
 
-    // Display hustles
-
     let list = document.getElementById("hustleList");
 
     list.innerHTML = "";
@@ -559,7 +473,7 @@ function findHustles() {
         hustle.description +
         "</p>" +
 
-        "<button class='start-button' onclick=\"showPlan('" +
+        "<button type='button' class='start-button' onclick=\"showPlan('" +
         hustle.name +
         "')\">" +
 
@@ -571,8 +485,6 @@ function findHustles() {
 
     });
 
-
-    // Personalized summary
 
     let moneyText = getMoneyText();
     let timeText = getTimeText();
@@ -870,7 +782,7 @@ function showPlan(name) {
     results.innerHTML =
     "<div class='card'>" +
     content +
-    "<button class='back-button' onclick='backToResults()'>" +
+    "<button type='button' class='back-button' onclick='backToResults()'>" +
     "← BACK TO MY HUSTLES" +
     "</button>" +
     "</div>";
@@ -895,7 +807,7 @@ function backToResults() {
 
     "<div id='hustleList'></div>" +
 
-    "<button class='back-button' onclick='startOver()'>" +
+    "<button type='button' class='back-button' onclick='startOver()'>" +
     "START OVER" +
     "</button>" +
 
@@ -904,4 +816,6 @@ function backToResults() {
 
     document.getElementById("questions").style.display = "none";
 
-    document.getElementById("res
+    document.getElementById("results").style.display = "block";
+
+    fin
